@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/SpawnScene.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/DuckScene.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+DuckScene = ExtResource( 2 )
+
+[node name="DuckSpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DuckSpawnTimer" to="." method="_on_DuckSpawnTimer_timeout"]

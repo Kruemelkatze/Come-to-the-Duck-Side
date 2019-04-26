@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/DuckScene.gd" type="Script" id=1]
+[ext_resource path="res://Art/placeholder_duck.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/DuckSprite.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 522.141, 11.0923, 0, 0, 0, 0, 364.473, 5.92291, 0, 0, 0, 0, 249.454, 5.92291, 0, 0, 0, 0, 180.959, 100.265, 0, 0, 0, 0, 36.2151, 195.899, 0, 0, 0, 0, -104.652, 207.53, 0, 0, 0, 0, -201.578, 173.929, 0, 0, 0, 0, -254.565, 17.5541, 0, 0, 0, 0, -299.684, -30.263, 0, 0, 0, 0, -396.611, -91.0037, 0, 0, 0, 0, -436.674, -85.8343, 0, 0, 0, 0, -465.105, -101.343, 0, 0, 0, 0, -10.6152, 62.7288, 0, 0, 0, 0, 284.085, -32.0644, 0, 0, 0, 0, 522.141, 11.0923 )
+}
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="DuckScene" type="Node2D"]
+position = Vector2( 458.123, 258.963 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 522.141, 11.0923 )
+rotation = -3.10882
+loop = false
+
+[node name="DuckSprite" type="Sprite" parent="Path2D/PathFollow2D"]
+position = Vector2( 0.970978, 0.639145 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D"]
+root_node = NodePath("")
+
+[node name="Duck" type="RigidBody2D" parent="."]
+collision_mask = 0
+gravity_scale = 0.0
+custom_integrator = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Duck"]
+shape = SubResource( 1 )
+
