@@ -11,6 +11,7 @@ env:
 
 install:
 - docker build -t felfio/godot-export .
+- mv export_presets.cfg.travis export_presets.cfg
 
 # Each of the following lines exports the game for a given platform.
 # You can specify the platform in the EXPORT_NAME variable
