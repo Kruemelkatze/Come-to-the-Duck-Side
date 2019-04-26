@@ -10,7 +10,7 @@ env:
   - GAME_NAME="bada55-b0cc1a"
 
 install:
-- docker build -t felfio/godot-export
+- docker build -t felfio/godot-export .
 
 # Each of the following lines exports the game for a given platform.
 # You can specify the platform in the EXPORT_NAME variable
