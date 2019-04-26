@@ -35,6 +35,9 @@ before_deploy:
 - zip -j "${GAME_NAME}-windows.zip" output/windows/*
 # No need to zip the mac game, because it already is a zip
 - cp -R output/mac/* .
+- eval $(ssh-agent -s)
+- ssh-add <(echo "$SSH_DEPLOY_KEY")
+
 
 deploy:
 # The following block is responsible to upload the zip files
@@ -66,6 +69,12 @@ deploy:
     # You can optionally only update the game on new git tags.
     branch: develop
     # tags: true
+
+- provider: script
+  skip-cleanup: true
+  script: scp $DEPLOY_SCP_OPTIONS output/html5/* $DEPLOY_TARGET
+  on:
+    branch: develop
 
 - provider: pages
   skip-cleanup: true
