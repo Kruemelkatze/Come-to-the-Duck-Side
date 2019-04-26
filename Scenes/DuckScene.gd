@@ -8,7 +8,12 @@ extends Node2D
 
 func _ready():
 	pass # Replace with function body.
-
+	var anim = get_node("Path2D/PathFollow2D/AnimationPlayer")
+	if(not anim.is_playing()):
+    	anim.play("DuckAnimation")
+		
+	if(not anim.is_playing()):
+		print("not playing" )
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
