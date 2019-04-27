@@ -8,7 +8,7 @@ export var Colors = {
 	'orange':Color("#ED8727"),
 	'purple':Color("#89667B"),
 	'green':Color("#87BF56"),
-	'default': Color(0,0,0)	
+	'default': Color('#9e9e9e')	
 }
 
 var ColorCombinations = [
