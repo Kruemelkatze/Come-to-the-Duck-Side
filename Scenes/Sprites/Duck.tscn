@@ -58,3 +58,6 @@ visible = false
 rotation = 4.71239
 shape = SubResource( 3 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="DuckSprite"]
+
+[connection signal="screen_exited" from="DuckSprite/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

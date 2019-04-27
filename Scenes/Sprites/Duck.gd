@@ -1,5 +1,7 @@
 extends PathFollow2D
 
+signal missed_duck
+
 export var speed = 100
 export var color = 'default'
 
@@ -33,7 +35,6 @@ func set_alpha(a):
 	$DuckSprite/ColorSprite.modulate.a = a
 	$DuckSprite/OutlineSprite.modulate.a = a
 
-
 func kill_me():
 	if health > Globals.KillDuckAtLifePoints:
 		was_hit = true	
@@ -41,3 +42,7 @@ func kill_me():
 	else:
 		queue_free()
 		return true
+
+func _on_VisibilityNotifier2D_screen_exited():
+	emit_signal("missed_duck")
+	queue_free()

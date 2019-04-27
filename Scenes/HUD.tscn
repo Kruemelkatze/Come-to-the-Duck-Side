@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Art/Fonts/ZCOOLKuaiLe-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Art/portrait_small.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -30,6 +31,10 @@ custom_constants/separation = 128
 [node name="ContinueLabel" type="Label" parent="PauseScreen/CenterContainer/VBoxContainer"]
 margin_right = 663.0
 margin_bottom = 65.0
+rect_pivot_offset = Vector2( 331, 32 )
+focus_next = NodePath("../ReturnMainLabel")
+focus_previous = NodePath("../ReturnMainLabel")
+focus_mode = 2
 custom_fonts/font = SubResource( 1 )
 text = "Continue"
 align = 1
@@ -38,7 +43,52 @@ align = 1
 margin_top = 193.0
 margin_right = 663.0
 margin_bottom = 258.0
+rect_pivot_offset = Vector2( 331, 32 )
+focus_next = NodePath("../ContinueLabel")
+focus_previous = NodePath("../ContinueLabel")
+focus_mode = 2
 custom_fonts/font = SubResource( 1 )
 text = "Return to Main Menu"
 align = 1
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_top = 20.0
+margin_bottom = 173.0
+rect_scale = Vector2( 0.35, 0.35 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 536.0
+margin_bottom = 173.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_right = 176.0
+margin_bottom = 173.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 180.0
+margin_right = 356.0
+margin_bottom = 173.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 360.0
+margin_right = 536.0
+margin_bottom = 173.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+
+[connection signal="focus_entered" from="PauseScreen/CenterContainer/VBoxContainer/ContinueLabel" to="." method="ContinueLabel_emph_start"]
+[connection signal="focus_exited" from="PauseScreen/CenterContainer/VBoxContainer/ContinueLabel" to="." method="ContinueLabel_emph_stop"]
+[connection signal="gui_input" from="PauseScreen/CenterContainer/VBoxContainer/ContinueLabel" to="." method="_on_ContinueLabel_gui_input"]
+[connection signal="focus_entered" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_start"]
+[connection signal="focus_exited" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_stop"]
+[connection signal="gui_input" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="_on_ReturnMainLabel_gui_input"]

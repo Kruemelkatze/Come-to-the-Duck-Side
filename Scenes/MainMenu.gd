@@ -42,9 +42,9 @@ func ExitGameLabel_emph_stop():
 	exit_label.set_rotation(0)
 
 func _on_StartGameLabel_gui_input(event):
-	if event is InputEventKey and event.scancode == KEY_ENTER:
+	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().change_scene("res://Scenes/Levels/Level1.tscn")
 
 func _on_ExitGameLabel_gui_input(event):
-	if event is InputEventKey and event.scancode == KEY_ENTER:
+	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().quit()
