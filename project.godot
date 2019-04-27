@@ -19,11 +19,6 @@ config/name="bada55b0cc1a"
 run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/width=1280
-window/size/height=720
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
