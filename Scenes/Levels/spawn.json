@@ -1,21 +1,21 @@
 {
 	"sequences": [{
 			"ducks": [
-				"Blau",
-				"Rot",
-				"Blau",
-				"Blau",
-				"Blau",
-				"Blau",
-				"Blau"
+				"blue",
+				"red",
+				"yellow",
+				"cyan",
+				"orange",
+				"purple",
+				"green"
 			],
 			"speed": 100,
 			"spawn_time": 0.3
 		},
 		{
 			"ducks": [
-				"Rot",
-				"Rot"
+				"red",
+				"red"
 			],
 			"speed": 100,
 			"spawn_time": 0.3

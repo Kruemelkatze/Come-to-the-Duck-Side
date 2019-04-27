@@ -29,10 +29,22 @@ func _process(delta):
 		duck.set_offset(current_offset + delta*duck.speed)
 		
 func get_color(key):
-	if key=='Blau':
-		return Color(0,0,1)
-	elif key=='Rot':
-		return Color(1,0,0)
+	if key=='blue':
+		return Color("#2b80b9")
+	elif key=='red':
+		return Color("#e74b3c")
+	elif key=='yellow':
+		return Color("#f2c311")
+	elif key=='cyan':
+		return Color("#1cbb9b")
+	elif key=='orange':
+		return Color("#ED8727")
+	elif key=='purple':
+		return Color("#82836C")
+	elif key=='green':
+		return Color("#89667B")
+	else:
+		return Color(0,0,0)
 
 
 func _on_SpawnTimer_timeout():
@@ -44,6 +56,7 @@ func _on_SpawnTimer_timeout():
 		var duck = Duck.instance()
 		duck.speed = sequence["speed"]
 		var color = get_color(sequence["ducks"][duck_index])
+		duck.set_color(sequence["ducks"][duck_index])
 		duck.get_node("DuckSprite").modulate = Color(color.r, color.g, color.b)
 		$DuckPath.add_child(duck)
 		
