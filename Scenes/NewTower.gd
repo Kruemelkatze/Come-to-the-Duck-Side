@@ -1,6 +1,6 @@
 extends Node2D
 
-export var angular_speed = 90
+export var angular_speed = 60
 export var number = 1
 var wasd = false
 

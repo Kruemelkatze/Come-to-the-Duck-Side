@@ -1,5 +1,8 @@
 extends Node2D
 
+export var DucksLifeInSeconds = 0.75
+export var KillDuckAtLifePoints = 0.2
+
 export var Colors = {
 	'blue':Color("#2b80b9"),
 	'red':Color("#e74b3c"),

@@ -40,4 +40,11 @@ rotation = -3.19221
 number = 2
 colorName = "blue"
 
+[node name="Mountain" type="Area2D" parent="."]
+position = Vector2( 234.187, 143.299 )
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountain"]
+polygon = PoolVector2Array( -10.1308, -114.996, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

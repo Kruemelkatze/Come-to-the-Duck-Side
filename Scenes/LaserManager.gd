@@ -67,6 +67,10 @@ func hit_something_with_laser(laser):
 	if laser.is_colliding_with_target:
 		laser.set_to_position(laser.target_collision_point)
 		var wr = weakref(laser.get_hit_target())
+		
+		if wr == null:
+			return
+			
 		var target: Area2D = wr.get_ref()
 		
 		if target == null || !target:
@@ -76,9 +80,9 @@ func hit_something_with_laser(laser):
 			target = target.get_parent()
 			
 		if target != null && target.get('color') == laser.colorName && target.has_method('kill_me'):
-			laser.remove_hit_target()
-			target.kill_me()
-			target = null
+			if target.kill_me():
+				laser.remove_hit_target()
+				target = null
 
 	else:
 		laser.set_open()
