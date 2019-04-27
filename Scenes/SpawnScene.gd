@@ -7,6 +7,7 @@ export (PackedScene) var DuckScene
 var duck_textures
 var sequence="WWBBWW"
 var index=0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#pass # Replace with function body.
@@ -14,7 +15,10 @@ func _ready():
 	_preload_textures()
 	var file = File.new()
 	file.open("res://Levels/spawn.json", file.READ)
+	
 	var json = parse_json(file.get_as_text())
+	sequence = json["sequence"][1]
+	print()
 	$DuckSpawnSequenceTimer.start()
 	
 	#_spawn_ducks(10)
@@ -32,29 +36,14 @@ func get_texture(key):
 		return 0
 
 func _on_DuckSpawnTimer_timeout():
-	#pass # Replace with function body.
 	
-    # Create a Mob instance and add it to the scene.
-	#var rand_text_index = randi() % duck_textures.size()
-	#var texture =duck_textures[rand_text_index]
+	
+	#sequence="WWBBWW"
 	var duck = DuckScene.instance()
-	#print(sequence[index])
-	#print(get_texture(sequence[index]))
-	duck.set_texture(duck_textures[get_texture(sequence[index])])
+	var sequence_char =sequence[index]
+	duck.set_texture(duck_textures[get_texture(sequence_char)])
 	index+=1
 	if index==len(sequence):
 		$DuckSpawnSequenceTimer.stop()
-	
-	
-	#duck.
-	#var duck = DuckScene.instance()
-	#
-  #$Sprite.texture = 
 	add_child(duck)
-	
-	#var start_pos=  Vector2(get_viewport().size.x,get_viewport().size.y/2)
-	#var start= Vector2(0,0)
- 	#mob.set_position(0,0)
-	#duck.rotation = 90
-    # Set the velocity (speed & direction).
   
