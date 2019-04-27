@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scenes/Duck.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Sprites/Duck.gd" type="Script" id=1]
 [ext_resource path="res://Art/duck/outline5.png" type="Texture" id=2]
 [ext_resource path="res://Art/duck/outline4.png" type="Texture" id=3]
 [ext_resource path="res://Art/duck/outline3.png" type="Texture" id=4]
@@ -20,7 +20,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 10 ) ],
 "loop": true,
@@ -28,7 +28,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 76.1524
 height = 99.8048
 
@@ -50,12 +50,12 @@ playing = true
 
 [node name="ColorSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckSprite"]
 visible = false
 rotation = 4.71239
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
