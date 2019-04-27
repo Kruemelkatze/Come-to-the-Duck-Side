@@ -1,27 +1,18 @@
-{
-	"sequences": [{
-			"ducks": [
-				"blue",
-				"red",
-				"yellow",
-				"cyan",
-				"orange",
-				"purple",
-				"green"
-			],
-			"speed": 100,
-			"spawn_time": 0.3
-		},
-		{
-			"ducks": [
-				"red",
-				"red"
-			],
-			"speed": 100,
-			"spawn_time": 0.3
-		}
-
-	],
-	"pause": [2, 0.5, 0.5]
-
-}
+[
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 0},
+		{"color": "red", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "red", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "red", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "red", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 3},
+		{"color": "orange", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "green", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 1},
+		{"color": "cyan", "speed": 1000, "path": 0, "break_after": 1},
+]

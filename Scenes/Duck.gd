@@ -15,3 +15,22 @@ func _ready():
 #	pass
 func set_color(c):
 	color = c
+	$DuckSprite.modulate = get_color_by_name(c)
+	
+func get_color_by_name(key):
+	if key=='blue':
+		return Color("#2b80b9")
+	elif key=='red':
+		return Color("#e74b3c")
+	elif key=='yellow':
+		return Color("#f2c311")
+	elif key=='cyan':
+		return Color("#1cbb9b")
+	elif key=='orange':
+		return Color("#ED8727")
+	elif key=='purple':
+		return Color("#89667B")
+	elif key=='green':
+		return Color("#87BF56")
+	else:
+		return Color(0,0,0)

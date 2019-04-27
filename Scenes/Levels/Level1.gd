@@ -3,78 +3,38 @@ extends Node
 export (PackedScene) var Duck
 
 
-var sequence
 var duck_index=0 #character index in sequence
-var sequence_index=0
-var pause_index=-1
-var json
-var pause = false  # Flag for enable/disable spawn or pause
+var duck_sequence
+var paths
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	var file = File.new()
 	file.open("res://Scenes/Levels/spawn.json", file.READ)
-	json = parse_json(file.get_as_text())
-	
-	sequence = json["sequences"][sequence_index]
-	$SpawnTimer.start(sequence["spawn_time"])
+	duck_sequence = parse_json(file.get_as_text())
+	paths = [$DuckPath]
+	$SpawnTimer.start()
 	
 
 
 func _process(delta):
-	var ducks = $DuckPath.get_children()
+	var ducks = []
+	for path in paths:
+		ducks += path.get_children()
 	for duck in ducks:
 		var current_offset = duck.get_offset()
 		duck.set_offset(current_offset + delta*duck.speed)
 		
-func get_color(key):
-	if key=='blue':
-		return Color("#2b80b9")
-	elif key=='red':
-		return Color("#e74b3c")
-	elif key=='yellow':
-		return Color("#f2c311")
-	elif key=='cyan':
-		return Color("#1cbb9b")
-	elif key=='orange':
-		return Color("#ED8727")
-	elif key=='purple':
-		return Color("#82836C")
-	elif key=='green':
-		return Color("#89667B")
-	else:
-		return Color(0,0,0)
-
 
 func _on_SpawnTimer_timeout():
+	var duck = Duck.instance()
+	var duck_config = duck_sequence[duck_index]
+	duck.speed = duck_config["speed"]
+	duck.set_color(duck_config["color"])
+	paths[duck_config["path"]].add_child(duck)
 	
-	
-	
-	#sequence="WWBBWW"
-	if !pause:
-		var duck = Duck.instance()
-		duck.speed = sequence["speed"]
-		var color = get_color(sequence["ducks"][duck_index])
-		duck.set_color(sequence["ducks"][duck_index])
-		duck.get_node("DuckSprite").modulate = Color(color.r, color.g, color.b)
-		$DuckPath.add_child(duck)
-		
-		duck_index+=1
-		if duck_index==len(sequence["ducks"]):
-			$SpawnTimer.stop()
-			pause_index+=1
-			if pause_index!=len(json["pause"]):
-				$SpawnTimer.start(json["pause"][pause_index])
-				pause=true
-	elif pause:
-		$SpawnTimer.stop()
-		pause=false
-		print(sequence_index)
-		sequence_index+=1
-		if sequence_index==len(json["sequences"]):
-			$SpawnTimer.stop()
-		else:
-			sequence = json["sequences"][sequence_index]
-			duck_index=0
-			$SpawnTimer.start(sequence["spawn_time"])
+	duck_index += 1
+	$SpawnTimer.stop()
+	if duck_index < len(duck_sequence):
+		$SpawnTimer.start(duck_config["break_after"])
