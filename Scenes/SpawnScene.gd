@@ -7,7 +7,7 @@ var sequence="WWBBWW"
 var index=0 #character index in sequence
 var sequence_index=0
 var pause_index=-1
-var spawn_time=0.25
+var spawn_time=0.5
 var json
 var pause = false  # Flag for enable/disable spawn or pause
 
@@ -21,12 +21,10 @@ func _ready():
 	
 	json = parse_json(file.get_as_text())
 	sequence = json["sequence"][sequence_index]
+	#TODO: Set spawn_time based on speed
 	$DuckSpawnSequenceTimer.start(spawn_time)
 	
-	#_spawn_ducks(10)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	
 
 func _preload_textures():
   duck_textures = [ preload("res://Art/placeholder_duck_blue.png"), preload("res://Art/placeholder_duck.png")]
@@ -45,6 +43,7 @@ func _on_DuckSpawnTimer_timeout():
 		var duck = DuckScene.instance()
 		var sequence_char =sequence[index]
 		duck.set_texture(duck_textures[get_texture(sequence_char)])
+		duck.set_speed(json["speed"][sequence_index])
 		add_child(duck)
 		index+=1
 		if index==len(sequence):

@@ -15,6 +15,9 @@ func _ready():
 func set_texture(texture):
 	var duck_sprite = get_node("Path2D/PathFollow2D/DuckSprite")
 	duck_sprite.set_texture(texture)
+func set_speed(speed):
+	var anim = get_node("Path2D/PathFollow2D/AnimationPlayer")
+	anim.set_speed_scale(speed)
 	#duck_sprite.rotate()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
