@@ -15,7 +15,7 @@ func _ready():
 #	pass
 func set_color(c):
 	color = c
-	$DuckSprite.modulate = get_color_by_name(c)
+	$DuckSprite/ColorSprite.modulate = get_color_by_name(c)
 	
 func get_color_by_name(key):
 	if key=='blue':
