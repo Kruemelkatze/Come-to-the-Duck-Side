@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="bada55b0cc1a"
-run/main_scene="res://Scenes/SpawnScene.tscn"
+run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [rendering]
