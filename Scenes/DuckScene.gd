@@ -1,8 +1,6 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 
 # Called when the node enters the scene tree for the first time.
 
@@ -17,6 +15,7 @@ func _ready():
 func set_texture(texture):
 	var duck_sprite = get_node("Path2D/PathFollow2D/DuckSprite")
 	duck_sprite.set_texture(texture)
+	#duck_sprite.rotate()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
