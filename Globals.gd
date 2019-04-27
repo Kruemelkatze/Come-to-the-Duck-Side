@@ -17,6 +17,10 @@ var ColorCombinations = [
 	['yellow', 'cyan', 'green']
 ]
 
+export var SelectableColors = [
+	'red', 'blue', 'yellow', 'cyan'
+]
+
 func get_combined_color(a, b):
 	for c in ColorCombinations:
 		if c[0] == a && c[1] == b || c[1] == a && c[0] == b:

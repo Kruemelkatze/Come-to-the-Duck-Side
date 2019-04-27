@@ -4,7 +4,7 @@ export (PackedScene) var NewLaser
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var count = 1
+var frame = 0
 var combined : Area2D = null
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	frame += 1
 	var l1 = $NewTower1/NewLaser
 	var l2 = $NewTower2/NewLaser
 	
@@ -32,9 +33,11 @@ func is_suitable_for_combination(laser: Area2D):
 	if !laser.is_colliding_with_laser:
 		return false
 		
-	var pos = to_global(laser.position)
-	var distance_to_laser = pos.distance_squared_to(laser.laser_collision_point)
-	var distance_to_target = pos.distance_squared_to(laser.target_collision_point)
+	var pos = laser.global_position
+	var lcp = laser.laser_collision_point
+	var tcp = laser.target_collision_point
+	var distance_to_laser = pos.distance_squared_to(lcp)
+	var distance_to_target = pos.distance_squared_to(tcp)
 	
 	return distance_to_laser < distance_to_target
 	
@@ -63,6 +66,20 @@ func combine_laser(l1, l2):
 func hit_something_with_laser(laser):
 	if laser.is_colliding_with_target:
 		laser.set_to_position(laser.target_collision_point)
+		var wr = weakref(laser.get_hit_target())
+		var target: Area2D = wr.get_ref()
+		
+		if target == null || !target:
+			return
+		
+		if target.get('color') == null:
+			target = target.get_parent()
+			
+		if target != null && target.get('color') == laser.colorName && target.has_method('kill_me'):
+			laser.remove_hit_target()
+			target.kill_me()
+			target = null
+
 	else:
 		laser.set_open()
 	
