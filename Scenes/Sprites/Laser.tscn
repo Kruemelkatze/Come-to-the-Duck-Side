@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/NewLaser.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Sprites/Laser.gd" type="Script" id=1]
 [ext_resource path="res://Art/laser.png" type="Texture" id=2]
+
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 0, 1 )
@@ -33,4 +34,5 @@ region_rect = Rect2( 0, 0, 1, 20 )
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 50, 0 )
 width = 1.0
+texture_mode = 0
 
