@@ -1,9 +1,6 @@
 extends Area2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-export var color = 1
+export var colorName = 'default'
 var max_cast = 0
 
 export var is_colliding_with_target = false
@@ -31,12 +28,11 @@ func _ready():
 	$TargetRaycast.cast_to = Vector2(max_cast, 0)
 	$LaserRaycast.cast_to = Vector2(max_cast, 0)
 	$Sprite.texture.flags = $Sprite.texture.flags | $Sprite.texture.FLAG_REPEAT
+	change_color(colorName)
 	set_open()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Sprite.modulate = Color(1 if color & 4 else 0, 1 if color & 2 else 0, 1 if color & 1 else 0)	
-	
 	is_colliding_with_target = $TargetRaycast.is_colliding()
 	target_collision_point = $TargetRaycast.get_collision_point() if is_colliding_with_target else Vector2.INF
 	hit_target = $TargetRaycast.get_collider()
@@ -45,6 +41,10 @@ func _process(delta):
 		is_colliding_with_laser = $LaserRaycast.is_colliding()
 		laser_collision_point = $LaserRaycast.get_collision_point() if is_colliding_with_laser else Vector2.INF
 		
+func change_color(col: String):
+	colorName = col
+	$Sprite.modulate = Globals.get_color_by_name(col)
+
 func get_hit_target():
 	return hit_target
 	

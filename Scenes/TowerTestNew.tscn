@@ -20,4 +20,5 @@ position = Vector2( 117.368, 124.316 )
 [node name="NewTower2" parent="LaserManager" instance=ExtResource( 4 )]
 position = Vector2( 148.549, 505.094 )
 number = 2
+colorName = "blue"
 
