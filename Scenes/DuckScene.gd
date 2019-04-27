@@ -14,6 +14,9 @@ func _ready():
 		
 	if(not anim.is_playing()):
 		print("not playing" )
+func set_texture(texture):
+	var duck_sprite = get_node("Path2D/PathFollow2D/DuckSprite")
+	duck_sprite.set_texture(texture)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

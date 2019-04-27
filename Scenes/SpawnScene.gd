@@ -26,9 +26,10 @@ func _on_DuckSpawnTimer_timeout():
     # Create a Mob instance and add it to the scene.
 	var rand_text_index = randi() % duck_textures.size()
 	var texture =duck_textures[rand_text_index]
-	#var duck = DuckScene.instance(texture)
-	#duck.
 	var duck = DuckScene.instance()
+	duck.set_texture(texture)
+	#duck.
+	#var duck = DuckScene.instance()
 	#
   #$Sprite.texture = 
 	add_child(duck)

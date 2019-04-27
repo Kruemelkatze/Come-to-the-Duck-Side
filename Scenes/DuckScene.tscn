@@ -22,8 +22,8 @@ __meta__ = {
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2( -244.399, 47.5549 )
-rotation = -1.89749
+position = Vector2( -244.399, 47.5551 )
+rotation = -1.8975
 offset = 938.876
 
 [node name="DuckSprite" type="Sprite" parent="Path2D/PathFollow2D"]
