@@ -11,9 +11,9 @@ var paths
 func _ready():
 	
 	var file = File.new()
-	file.open("res://Scenes/Levels/Level1.json", file.READ)
+	file.open("res://Scenes/Levels/Level2.json", file.READ)
 	duck_sequence = parse_json(file.get_as_text())
-	paths = [$DuckPath]
+	paths = [$DuckPath,$DuckPath2]
 	$SpawnTimer.start()
 	
 
