@@ -19,6 +19,10 @@ config/name="bada55b0cc1a"
 run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

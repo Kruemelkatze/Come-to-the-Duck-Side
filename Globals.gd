@@ -1,0 +1,29 @@
+extends Node2D
+
+export var Colors = {
+	'blue':Color("#2b80b9"),
+	'red':Color("#e74b3c"),
+	'yellow':Color("#f2c311"),
+	'cyan':Color("#1cbb9b"),
+	'orange':Color("#ED8727"),
+	'purple':Color("#89667B"),
+	'green':Color("#87BF56"),
+	'default': Color(0,0,0)	
+}
+
+var ColorCombinations = [
+	['blue', 'red', 'purple'],
+	['red', 'yellow', 'orange'],
+	['yellow', 'cyan', 'green']
+]
+
+func get_combined_color(a, b):
+	for c in ColorCombinations:
+		if c[0] == a && c[1] == b || c[1] == a && c[0] == b:
+			return c[2]
+			
+	return 'default'
+
+func get_color_by_name(key = ''):
+	return Colors.get(key, Globals.Colors['default'])
+	

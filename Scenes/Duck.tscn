@@ -20,7 +20,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 10 ) ],
 "loop": true,
@@ -28,7 +28,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 76.1524
 height = 99.8048
 
@@ -45,17 +45,17 @@ __meta__ = {
 [node name="OutlineSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
 frames = SubResource( 1 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="ColorSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
-frames = SubResource( 3 )
-frame = 2
+frames = SubResource( 2 )
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckSprite"]
 visible = false
 rotation = 4.71239
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
