@@ -35,8 +35,6 @@ before_deploy:
 - zip -j "${GAME_NAME}-windows.zip" output/windows/*
 # No need to zip the mac game, because it already is a zip
 - cp -R output/mac/* .
-- eval $(ssh-agent -s)
-- ssh-add <(echo "$SSH_DEPLOY_KEY")
 
 
 deploy:
