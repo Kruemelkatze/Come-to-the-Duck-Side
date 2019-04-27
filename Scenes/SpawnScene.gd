@@ -7,7 +7,7 @@ var sequence="WWBBWW"
 var index=0 #character index in sequence
 var sequence_index=0
 var pause_index=-1
-var spawn_time=0.5
+#var spawn_time=0.5
 var json
 var pause = false  # Flag for enable/disable spawn or pause
 
@@ -21,8 +21,8 @@ func _ready():
 	
 	json = parse_json(file.get_as_text())
 	sequence = json["sequence"][sequence_index]
-	#TODO: Set spawn_time based on speed
-	$DuckSpawnSequenceTimer.start(spawn_time)
+	
+	$DuckSpawnSequenceTimer.start(json["spawn_time"][sequence_index])
 	
 	
 
@@ -61,7 +61,7 @@ func _on_DuckSpawnTimer_timeout():
 		print(sequence_index)
 		sequence = json["sequence"][sequence_index]
 		index=0
-		$DuckSpawnSequenceTimer.start(spawn_time)
+		$DuckSpawnSequenceTimer.start(json["spawn_time"][sequence_index])
 	
 	
   
