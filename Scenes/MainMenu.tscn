@@ -48,9 +48,12 @@ margin_bottom = 390.0
 custom_constants/separation = 128
 
 [node name="StartGameLabel" type="Label" parent="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer"]
-anchor_right = 1.0
+margin_right = 478.0
 margin_bottom = 65.0
 rect_pivot_offset = Vector2( 239, 32 )
+focus_next = NodePath("../ExitGameLabel")
+focus_previous = NodePath("../ExitGameLabel")
+focus_mode = 2
 mouse_filter = 1
 custom_fonts/font = SubResource( 1 )
 text = "Duck Duck Go!"
@@ -62,6 +65,9 @@ margin_top = 193.0
 margin_right = 478.0
 margin_bottom = 258.0
 rect_pivot_offset = Vector2( 239, 32 )
+focus_next = NodePath("../StartGameLabel")
+focus_previous = NodePath(".")
+focus_mode = 2
 mouse_filter = 1
 custom_fonts/font = SubResource( 2 )
 text = "Duck Off (Exit)"
@@ -75,7 +81,9 @@ text = "TODO: Credits"
 align = 2
 valign = 2
 
-[connection signal="mouse_entered" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/StartGameLabel" to="." method="_on_StartGameLabel_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/StartGameLabel" to="." method="_on_StartGameLabel_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitGameLabel" to="." method="_on_ExitGameLabel_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitGameLabel" to="." method="_on_ExitGameLabel_mouse_exited"]
+[connection signal="focus_entered" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/StartGameLabel" to="." method="StartGameLabel_emph_start"]
+[connection signal="focus_exited" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/StartGameLabel" to="." method="StartGameLabel_emph_stop"]
+[connection signal="gui_input" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/StartGameLabel" to="." method="_on_StartGameLabel_gui_input"]
+[connection signal="focus_entered" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitGameLabel" to="." method="ExitGameLabel_emph_start"]
+[connection signal="focus_exited" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitGameLabel" to="." method="ExitGameLabel_emph_stop"]
+[connection signal="gui_input" from="MainMenuContainer/VBoxContainer/CenterContainer/VBoxContainer/ExitGameLabel" to="." method="_on_ExitGameLabel_gui_input"]
