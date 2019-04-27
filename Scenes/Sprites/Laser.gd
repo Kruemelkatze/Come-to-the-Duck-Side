@@ -48,6 +48,9 @@ func change_color(col: String):
 func get_hit_target():
 	return hit_target
 	
+func remove_hit_target():
+	hit_target = null
+	
 func set_to_position(global_position):
 	var local_pos = to_local(global_position)
 	var length = local_pos.length()
