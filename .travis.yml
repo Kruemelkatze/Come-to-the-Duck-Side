@@ -68,12 +68,6 @@ deploy:
     branch: develop
     # tags: true
 
-- provider: script
-  skip-cleanup: true
-  script: scp $DEPLOY_SCP_OPTIONS output/html5/* $DEPLOY_TARGET
-  on:
-    branch: develop
-
 - provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
