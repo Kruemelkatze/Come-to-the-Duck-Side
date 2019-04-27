@@ -1,0 +1,54 @@
+[
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 1},
+		
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 15},
+		
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 1},
+		
+		{"color": "cyan", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 0, "break_after": 15},
+		
+		
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 10},
+		
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "yellow", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 100, "path": 1, "break_after": 15},
+		
+		{"color": "cyan", "speed": 300, "path": 0, "break_after": 0.5},
+		{"color": "yellow", "speed": 300, "path": 0, "break_after": 3},
+		
+		{"color": "yellow", "speed": 300, "path": 1, "break_after": 0.5},
+		{"color": "cyan", "speed": 300, "path": 1, "break_after": 1},
+		
+		
+		{"color": "green", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "green", "speed": 100, "path": 1, "break_after": 5},
+		
+		{"color": "yellow", "speed": 100, "path": 1, "break_after": 0.6},
+		{"color": "green", "speed": 100, "path": 0, "break_after": 10},
+		
+		{"color": "green", "speed": 200, "path": 1, "break_after": 0.6},
+		{"color": "yellow", "speed": 200, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 200, "path": 1, "break_after": 0.6},
+		{"color": "cyan", "speed": 200, "path": 0, "break_after": 0.6},
+		{"color": "yellow", "speed": 200, "path": 0, "break_after": 0.6},
+		{"color": "green", "speed": 200, "path": 0, "break_after": 15}
+		
+		
+]
