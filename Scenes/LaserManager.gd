@@ -54,6 +54,8 @@ func combine_laser(l1, l2):
 		combined.is_combined = true
 		add_child(combined)
 	
+	var color= Globals.get_combined_color(l1.colorName, l2.colorName)
+	combined.change_color(color)
 	combined.position = to_local(l1.laser_collision_point)
 	var rot = (Vector2.ONE.rotated(l1.get_parent().rotation) + Vector2.ONE.rotated(l2.get_parent().rotation)).angle()
 	combined.rotation = rot - PI / 4
