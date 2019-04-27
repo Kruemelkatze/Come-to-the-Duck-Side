@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/LaserCombination.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Laser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Target.tscn" type="PackedScene" id=3]
+
+[node name="LaserIntersection" type="Node2D"]
+script = ExtResource( 1 )
+Laser = ExtResource( 2 )
+
+[node name="Laser1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 28.4318, 33.3089 )
+
+[node name="Laser2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 909.819, 539.403 )
+wasd = true
+
+[node name="Area2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 924.327, 287.195 )
+
