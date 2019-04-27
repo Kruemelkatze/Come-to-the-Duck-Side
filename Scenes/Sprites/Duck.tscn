@@ -45,13 +45,12 @@ __meta__ = {
 [node name="OutlineSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="ColorSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
 frames = SubResource( 2 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckSprite"]
@@ -59,3 +58,6 @@ visible = false
 rotation = 4.71239
 shape = SubResource( 3 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="DuckSprite"]
+
+[connection signal="screen_exited" from="DuckSprite/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

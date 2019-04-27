@@ -1,5 +1,7 @@
 extends PathFollow2D
 
+signal missed_duck
+
 export var speed = 100
 var color
 # Declare member variables here. Examples:
@@ -16,3 +18,8 @@ func _ready():
 func set_color(c):
 	color = c
 	$DuckSprite/ColorSprite.modulate = Globals.get_color_by_name(c)
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	emit_signal("missed_duck")
+	queue_free()

@@ -9,14 +9,11 @@ var paths
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	var file = File.new()
 	file.open("res://Scenes/Levels/Level1.json", file.READ)
 	duck_sequence = parse_json(file.get_as_text())
 	paths = [$DuckPath]
 	$SpawnTimer.start()
-	
-
 
 func _process(delta):
 	var ducks = []
@@ -25,7 +22,6 @@ func _process(delta):
 	for duck in ducks:
 		var current_offset = duck.get_offset()
 		duck.set_offset(current_offset + delta*duck.speed)
-		
 
 func _on_SpawnTimer_timeout():
 	var duck = Duck.instance()
