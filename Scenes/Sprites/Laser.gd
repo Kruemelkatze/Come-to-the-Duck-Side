@@ -62,7 +62,9 @@ func _process(delta):
 		
 func change_color(col: String):
 	colorName = col
-	$OutlineSprite.modulate = Globals.get_color_by_name(col)
+	var that_color = Globals.get_color_by_name(col)
+	$OutlineSprite.modulate = that_color
+	$CenterSprite.modulate = that_color
 
 func get_hit_target():
 	return hit_target
