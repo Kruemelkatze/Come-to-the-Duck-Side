@@ -14,7 +14,11 @@ var towers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	towers = get_children()
+	towers = []
+	for c in get_children():
+		if c.get('player_number') != null:
+			towers.append(c)
+	
 	if TowerPlayer1.is_empty():
 		TowerPlayer1 = get_path_to(towers[0])
 	if TowerPlayer2.is_empty():

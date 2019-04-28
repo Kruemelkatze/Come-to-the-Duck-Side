@@ -1,10 +1,29 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Sprites/Laser.gd" type="Script" id=1]
-[ext_resource path="res://Art/laser.png" type="Texture" id=2]
+[ext_resource path="res://Art/laser/laser1.png" type="Texture" id=2]
+[ext_resource path="res://Art/laser/laser_modulate1.png" type="Texture" id=3]
+[ext_resource path="res://Art/laser/laser_modulate2.png" type="Texture" id=4]
+[ext_resource path="res://Art/laser/laser_modulate3.png" type="Texture" id=5]
+[ext_resource path="res://Art/laser/laser_modulate4.png" type="Texture" id=6]
+[ext_resource path="res://Art/laser/laser_modulate5.png" type="Texture" id=7]
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 0, 1 )
+
+[sub_resource type="AnimatedTexture" id=2]
+flags = 4
+frames = 5
+fps = 12.0
+frame_0/texture = ExtResource( 3 )
+frame_1/texture = ExtResource( 4 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 5 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 6 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 7 )
+frame_4/delay_sec = 0.0
 
 [node name="NewLaser" type="Area2D"]
 collision_layer = 2
@@ -25,12 +44,19 @@ cast_to = Vector2( 200, 0 )
 collision_mask = 2
 collide_with_areas = true
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 1, 20 )
-
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 50, 0 )
 width = 0.0
+
+[node name="CenterSprite" type="Sprite" parent="."]
+scale = Vector2( 1, 0.15 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 500, 100 )
+
+[node name="OutlineSprite" type="Sprite" parent="."]
+scale = Vector2( 1, 0.15 )
+texture = SubResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 500, 100 )
 

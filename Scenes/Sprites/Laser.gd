@@ -28,7 +28,7 @@ func _ready():
 	$Line2D.points[1].x = max_cast
 	$TargetRaycast.cast_to = Vector2(max_cast, 0)
 	$LaserRaycast.cast_to = Vector2(max_cast, 0)
-	$Sprite.texture.flags = $Sprite.texture.flags | $Sprite.texture.FLAG_REPEAT
+	#$Sprite.texture.flags = $Sprite.texture.flags | $Sprite.texture.FLAG_REPEAT
 	change_color(colorName)
 	set_open()
 	
@@ -62,7 +62,7 @@ func _process(delta):
 		
 func change_color(col: String):
 	colorName = col
-	$Sprite.modulate = Globals.get_color_by_name(col)
+	$OutlineSprite.modulate = Globals.get_color_by_name(col)
 
 func get_hit_target():
 	return hit_target
@@ -76,9 +76,11 @@ func set_to_position(global_position):
 	set_to_length(length)
 	
 func set_to_length(length):
-	$Sprite.position.x = length / 2
-	$Sprite.region_rect.size.x = length
+	$CenterSprite.position.x = length / 2
+	$OutlineSprite.position.x = length / 2
+	$CenterSprite.region_rect.size.x = length
+	$OutlineSprite.region_rect.size.x = length
 	
 func set_open():
-	$Sprite.position.x = max_cast /2
-	$Sprite.region_rect.size.x = max_cast
+	set_to_length(max_cast)
+	
