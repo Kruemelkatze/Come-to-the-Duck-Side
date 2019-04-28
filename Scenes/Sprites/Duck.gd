@@ -7,6 +7,7 @@ export var color = 'default'
 
 var was_hit = false
 var health = 1.0
+var killed = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -34,6 +35,7 @@ func set_color(c):
 func set_alpha(a):
 	$DuckSprite/ColorSprite.modulate.a = a
 	$DuckSprite/OutlineSprite.modulate.a = a
+	$DuckSprite/ShadowSprite.modulate.a = a
 
 func kill_me():
 	if health > Globals.KillDuckAtLifePoints:
@@ -41,8 +43,14 @@ func kill_me():
 		return false
 	else:
 		call_deferred("queue_free")
+		killed=true
+		$KillSound.play()
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
-	emit_signal("missed_duck")
-	call_deferred("queue_free")
+	print("offscreen: ")
+	print(killed)
+	if !killed:
+		emit_signal("missed_duck")
+		call_deferred("queue_free")
+

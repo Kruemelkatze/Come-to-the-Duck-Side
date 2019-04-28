@@ -11,19 +11,23 @@
 		{"color": "red", "speed": 100, "path": 0, "break_after": 2},
 		{"color": "blue", "speed": 100, "path": 0, "break_after": 0.6},
 		{"color": "red", "speed": 100, "path": 0, "break_after": 0.6},
-		{"color": "blue", "speed": 100, "path": 0, "break_after": 15},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 10},
 		
-		{"color": "blue", "speed": 300, "path": 0, "break_after": 0.6},
-		{"color": "blue", "speed": 300, "path": 0, "break_after": 5},
+		
+		{"color": "blue", "speed": 250, "path": 0, "break_after": 5},
 		
 		{"color": "purple", "speed": 100, "path": 0, "break_after": 0.6},
 		{"color": "red", "speed": 100, "path": 0, "break_after": 0.6},
-		{"color": "purple", "speed": 100, "path": 0, "break_after": 15},
+		{"color": "purple", "speed": 100, "path": 0, "break_after": 10},
 		
-		{"color": "red", "speed": 300, "path": 0, "break_after": 0.6},
-		{"color": "red", "speed": 300, "path": 0, "break_after": 10},
+		{"color": "purple", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "blue", "speed": 100, "path": 0, "break_after": 0.6},
+		{"color": "purple", "speed": 100, "path": 0, "break_after": 10},
 		
 		
-		{"color": "red", "speed": 1000, "path": 0, "break_after": 0.2},
-		{"color": "blue", "speed": 1000, "path": 0, "break_after": 1},
+		{"color": "red", "speed": 250, "path": 0, "break_after": 10},
+		
+		
+		{"color": "red", "speed": 250, "path": 0, "break_after": 0.5},
+		{"color": "blue", "speed": 250, "path": 0, "break_after": 1},
 ]
