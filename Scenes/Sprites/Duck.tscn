@@ -13,7 +13,7 @@
 [ext_resource path="res://Art/duck/outline2.png" type="Texture" id=11]
 [ext_resource path="res://Art/duck/outline1.png" type="Texture" id=12]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
@@ -21,7 +21,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
@@ -45,7 +45,7 @@ __meta__ = {
 
 [node name="ShadowSprite" type="Sprite" parent="DuckSprite"]
 modulate = Color( 0.14902, 0.137255, 0.137255, 1 )
-position = Vector2( -5.85211, -3.8147e-005 )
+position = Vector2( -5.85211, -3.8147e-05 )
 rotation = 4.71239
 texture = ExtResource( 2 )
 

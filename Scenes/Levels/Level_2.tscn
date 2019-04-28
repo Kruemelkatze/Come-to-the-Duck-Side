@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/Levels/Level2.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/level_2.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/NewTower.gd" type="Script" id=9]
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {
