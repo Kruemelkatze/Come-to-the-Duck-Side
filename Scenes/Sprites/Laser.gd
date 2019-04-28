@@ -11,6 +11,7 @@ export var laser_collision_point = Vector2.INF
 var hit_target: Object = null
 
 export var is_combined = false
+export var is_combining = false
 
 func _init(combined = false):
 	is_combined = combined
@@ -23,7 +24,8 @@ func _ready():
 		$LaserRaycast.enabled = false
 		$CollisionShape2D.disabled = true
 		$Line2D.visible = false
-		
+	
+	$SplashStart.visible = is_combined
 	max_cast = get_viewport_rect().size.length()
 	$Line2D.points[1].x = max_cast
 	$TargetRaycast.cast_to = Vector2(max_cast, 0)
@@ -37,6 +39,8 @@ func set_active(active):
 	$LaserRaycast.enabled = active
 	$TargetRaycast.enabled = active
 	$CollisionShape2D.disabled = !active
+	$Splash.visible = active
+	$SplashStart.visible = active
 	
 	if active:
 		set_open()
@@ -59,12 +63,17 @@ func _process(delta):
 	if !is_combined:
 		is_colliding_with_laser = $LaserRaycast.is_colliding()
 		laser_collision_point = $LaserRaycast.get_collision_point() if is_colliding_with_laser else Vector2.INF
-		
+
+	$SplashStart.visible = is_combined
+	$Splash.visible = !is_combining		
+	
 func change_color(col: String):
 	colorName = col
 	var that_color = Globals.get_color_by_name(col)
 	$OutlineSprite.modulate = that_color
 	$CenterSprite.modulate = that_color
+	$Splash.modulate = that_color
+	$SplashStart.modulate = that_color
 
 func get_hit_target():
 	return hit_target
@@ -82,6 +91,7 @@ func set_to_length(length):
 	$OutlineSprite.position.x = length / 2
 	$CenterSprite.region_rect.size.x = length
 	$OutlineSprite.region_rect.size.x = length
+	$Splash.position.x = length
 	
 func set_open():
 	set_to_length(max_cast)

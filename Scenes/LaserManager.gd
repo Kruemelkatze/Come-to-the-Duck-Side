@@ -47,7 +47,7 @@ func _process(delta):
 		hit_something_with_laser(combined)
 		return
 	
-	remove_combined()
+	remove_combined(l1, l2)
 	hit_something_with_laser(l1)
 	hit_something_with_laser(l2)
 		
@@ -63,7 +63,10 @@ func is_suitable_for_combination(laser: Area2D):
 	
 	return distance_to_laser < distance_to_target
 	
-func remove_combined():
+func remove_combined(l1, l2):
+	l1.is_combining = false
+	l2.is_combining = false
+		
 	if combined == null:
 		return
 		
@@ -71,6 +74,8 @@ func remove_combined():
 	combined = null
 		
 func combine_laser(l1, l2):
+	l1.is_combining = true
+	l2.is_combining = true
 	l1.set_to_position(l1.laser_collision_point)
 	l2.set_to_position(l2.laser_collision_point)
 	

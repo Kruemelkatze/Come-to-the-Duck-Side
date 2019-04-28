@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Sprites/Laser.gd" type="Script" id=1]
 [ext_resource path="res://Art/laser/color.png" type="Texture" id=2]
@@ -6,11 +6,10 @@
 [ext_resource path="res://Art/laser/color3.png" type="Texture" id=4]
 [ext_resource path="res://Art/laser/color4.png" type="Texture" id=5]
 [ext_resource path="res://Art/laser/color5.png" type="Texture" id=6]
-[ext_resource path="res://Art/laser/back1.png" type="Texture" id=7]
-[ext_resource path="res://Art/laser/back2.png" type="Texture" id=8]
-[ext_resource path="res://Art/laser/back3.png" type="Texture" id=9]
-[ext_resource path="res://Art/laser/back4.png" type="Texture" id=10]
-[ext_resource path="res://Art/laser/back5.png" type="Texture" id=11]
+[ext_resource path="res://Art/splash/splash1.png" type="Texture" id=7]
+[ext_resource path="res://Art/splash/splash2.png" type="Texture" id=8]
+[ext_resource path="res://Art/splash/splash3.png" type="Texture" id=9]
+[ext_resource path="res://Art/splash/splash4.png" type="Texture" id=10]
 
 [sub_resource type="LineShape2D" id=1]
 normal = Vector2( 0, 1 )
@@ -29,19 +28,13 @@ frame_3/delay_sec = 0.0
 frame_4/texture = ExtResource( 6 )
 frame_4/delay_sec = 0.0
 
-[sub_resource type="AnimatedTexture" id=3]
-flags = 4
-frames = 5
-fps = 12.0
-frame_0/texture = ExtResource( 7 )
-frame_1/texture = ExtResource( 8 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 9 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 10 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 11 )
-frame_4/delay_sec = 0.0
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
 
 [node name="NewLaser" type="Area2D"]
 collision_layer = 2
@@ -80,10 +73,17 @@ texture = SubResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 500, 100 )
 
-[node name="CenterSprite2" type="Sprite" parent="."]
+[node name="Splash" type="AnimatedSprite" parent="."]
+position = Vector2( 250.036, -1.25436 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 5
+frames = SubResource( 3 )
+playing = true
+
+[node name="SplashStart" type="AnimatedSprite" parent="."]
 visible = false
-scale = Vector2( 1, 0.05 )
-texture = SubResource( 3 )
-region_enabled = true
-region_rect = Rect2( 4156, 388, 0, 0 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 5
+frames = SubResource( 3 )
+playing = true
 
