@@ -49,14 +49,11 @@ position = Vector2( -6.62154, 34.3324 )
 scale = Vector2( 1.10282, 0.917187 )
 curve = SubResource( 2 )
 
-[node name="Mountain" type="Area2D" parent="."]
-position = Vector2( 234.187, 143.299 )
-collision_mask = 0
-
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
 [node name="LaserManager" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 5 )
 NewLaser = ExtResource( 6 )
 
@@ -84,5 +81,16 @@ volume_db = 10.0
 stream = SubResource( 4 )
 
 [node name="HUD" parent="." instance=ExtResource( 8 )]
+
+[node name="Mountain2" type="Area2D" parent="."]
+
+[node name="Mountain" type="CollisionPolygon2D" parent="Mountain2"]
+polygon = PoolVector2Array( 940.462, 619.935, 996.033, 657.413, 1254.5, 628.981, 1130.44, 389.896, 1011.54, 554.025, 984.402, 523.008 )
+
+[node name="Mountain3" type="Area2D" parent="."]
+
+[node name="Mountain" type="CollisionPolygon2D" parent="Mountain3"]
+position = Vector2( -872.34, -554.42 )
+polygon = PoolVector2Array( 902.983, 744.001, 1131.73, 763.386, 1169.21, 746.586, 1149.82, 575.995 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
