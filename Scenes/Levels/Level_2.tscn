@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scenes/Levels/Level_2.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Level_Control.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/level_2.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sounds/background_music_02.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Sounds/background_music_02.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -28,6 +28,7 @@ data = PoolByteArray( 79, 103, 103, 83, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 167, 85, 0
 [node name="Level2" type="Node"]
 script = ExtResource( 1 )
 Duck = ExtResource( 2 )
+this_level = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 640.225, 360.808 )
@@ -35,46 +36,43 @@ texture = ExtResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="Mountain" type="Area2D" parent="."]
-position = Vector2( 234.187, 143.299 )
-collision_mask = 0
+[node name="PathContainer" type="Node2D" parent="."]
+editor/display_folded = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountain"]
-position = Vector2( 850.529, 428.422 )
-polygon = PoolVector2Array( 42.8669, -184.73, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
-
-[node name="HUD" parent="." instance=ExtResource( 4 )]
-layer = -1
-
-[node name="DuckPath" type="Path2D" parent="."]
+[node name="DuckPath" type="Path2D" parent="PathContainer"]
 position = Vector2( -10.1264, 31.3283 )
 scale = Vector2( 1.10282, 0.917187 )
 curve = SubResource( 1 )
 
-[node name="DuckPath2" type="Path2D" parent="."]
+[node name="DuckPath2" type="Path2D" parent="PathContainer"]
 position = Vector2( -6.62154, 34.3324 )
 scale = Vector2( 1.10282, 0.917187 )
 curve = SubResource( 2 )
 
+[node name="Mountain" type="Area2D" parent="."]
+position = Vector2( 234.187, 143.299 )
+collision_mask = 0
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 
 [node name="LaserManager" type="Node2D" parent="."]
-script = ExtResource( 6 )
-NewLaser = ExtResource( 7 )
+editor/display_folded = true
+script = ExtResource( 5 )
+NewLaser = ExtResource( 6 )
 
-[node name="NewTower1" parent="LaserManager" instance=ExtResource( 8 )]
+[node name="NewTower1" parent="LaserManager" instance=ExtResource( 7 )]
 position = Vector2( 795.185, 138.854 )
 rotation = 2.94786
 colorName = "cyan"
 
-[node name="NewTower2" parent="LaserManager" instance=ExtResource( 8 )]
+[node name="NewTower2" parent="LaserManager" instance=ExtResource( 7 )]
 position = Vector2( 452.458, 330.846 )
 rotation = -5.65992
 player_number = 2
 colorName = "yellow"
 
-[node name="NewTower3" parent="LaserManager" instance=ExtResource( 8 )]
+[node name="NewTower3" parent="LaserManager" instance=ExtResource( 7 )]
 position = Vector2( 1003.23, 475.095 )
 rotation = -3.19221
 player_number = 0
@@ -85,5 +83,7 @@ volume_db = 10.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="LaserManager"]
 stream = SubResource( 4 )
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scenes/Levels/Level_1.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Level_Control.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/level_1.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=4]
@@ -26,7 +26,9 @@ Duck = ExtResource( 2 )
 position = Vector2( 641.285, 360.803 )
 texture = ExtResource( 3 )
 
-[node name="DuckPath" type="Path2D" parent="."]
+[node name="PathContainer" type="Node2D" parent="."]
+
+[node name="DuckPath" type="Path2D" parent="PathContainer"]
 position = Vector2( -5.17317, -158.674 )
 curve = SubResource( 1 )
 
@@ -43,7 +45,6 @@ rotation = 2.94786
 [node name="NewTower2" parent="LaserManager" instance=ExtResource( 6 )]
 position = Vector2( 1044.15, 596.775 )
 rotation = -3.19221
-number = 2
 colorName = "blue"
 
 [node name="KillSound" type="AudioStreamPlayer" parent="LaserManager"]
