@@ -42,7 +42,6 @@ texture = ExtResource( 3 )
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
-layer = -1
 
 [node name="PathContainer" type="Node2D" parent="."]
 
