@@ -24,8 +24,6 @@ func _process(delta):
 		ducks += path.get_children()
 	for duck in ducks:
 		var current_offset = duck.get_offset()
-		if(duck.get_unit_offset()>0.99):
-			duck.missed()
 		duck.set_offset(current_offset + delta*duck.speed)
 		
 

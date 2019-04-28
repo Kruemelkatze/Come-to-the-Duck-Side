@@ -7,6 +7,7 @@ export var color = 'default'
 
 var was_hit = false
 var health = 1.0
+var killed = false
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -41,14 +42,13 @@ func kill_me():
 		return false
 	else:
 		call_deferred("queue_free")
+		killed=true
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print(get_unit_offset())
-	#if(get_unit_offset()>0.8):
-		#print("EMIT SIGNAL")
-		#emit_signal("missed_duck")
-		#call_deferred("queue_free")
-func missed():
-	emit_signal("missed_duck")
-	call_deferred("queue_free")
+	print("offscreen: ")
+	print(killed)
+	if !killed:
+		emit_signal("missed_duck")
+		call_deferred("queue_free")
+
