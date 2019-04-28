@@ -40,7 +40,7 @@ func ExitGameLabel_emph_stop():
 
 func _on_StartGameLabel_gui_input(event):
 	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene("res://Scenes/Levels/Level1.tscn")
+		get_tree().change_scene("res://Scenes/Levels/Level_1.tscn")
 
 func _on_ExitGameLabel_gui_input(event):
 	if Input.is_action_just_pressed("ui_accept"):

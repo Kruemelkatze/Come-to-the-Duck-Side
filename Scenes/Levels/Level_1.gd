@@ -1,5 +1,7 @@
 extends Node
 
+signal level_complete
+
 export (PackedScene) var Duck
 
 
@@ -11,9 +13,11 @@ var paths
 func _ready():
 	var file = File.new()
 	file.open("res://Scenes/Levels/Level1.json", file.READ)
+	connect("level_complete", $HUD, "_on_level_complete")
 	duck_sequence = parse_json(file.get_as_text())
 	paths = [$DuckPath]
 	$SpawnTimer.start()
+	$BackgroundMusic.play()
 
 func _process(delta):
 	var ducks = []
@@ -22,6 +26,8 @@ func _process(delta):
 	for duck in ducks:
 		var current_offset = duck.get_offset()
 		duck.set_offset(current_offset + delta*duck.speed)
+	if duck_index == len(duck_sequence) and len(ducks) == 0:
+		emit_signal("level_complete", 1)
 
 func _on_SpawnTimer_timeout():
 	var duck = Duck.instance()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Sprites/Duck.gd" type="Script" id=1]
 [ext_resource path="res://Art/duck/duck_shadow.png" type="Texture" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Art/duck/outline2.png" type="Texture" id=11]
 [ext_resource path="res://Art/duck/outline1.png" type="Texture" id=12]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": true,
@@ -21,7 +21,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": true,
@@ -32,8 +32,6 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 76.1524
 height = 99.8048
-
-[sub_resource type="AudioStreamSample" id=4]
 
 [node name="Duck" type="PathFollow2D"]
 loop = false
@@ -47,19 +45,20 @@ __meta__ = {
 
 [node name="ShadowSprite" type="Sprite" parent="DuckSprite"]
 modulate = Color( 0.14902, 0.137255, 0.137255, 1 )
-position = Vector2( -5.85211, -3.8147e-005 )
+position = Vector2( -5.85211, -3.8147e-05 )
 rotation = 4.71239
 texture = ExtResource( 2 )
 
 [node name="ColorSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = -1.5708
 frames = SubResource( 2 )
-frame = 7
+frame = 3
 playing = true
 
 [node name="OutlineSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
 frames = SubResource( 1 )
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckSprite"]
@@ -68,8 +67,5 @@ rotation = 4.71239
 shape = SubResource( 3 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="DuckSprite"]
-
-[node name="KillSound" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 4 )
 
 [connection signal="screen_exited" from="DuckSprite/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
