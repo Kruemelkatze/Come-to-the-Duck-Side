@@ -1,18 +1,30 @@
 extends Node2D
 
 export var angular_speed = 90
-export var number = 1
+export var player_number = 1
 var wasd = false
 
 export var colorName = 'red'
 
 func _ready():
 	angular_speed = deg2rad(angular_speed)
-	#$NewLaser.set_number(number)
-	wasd = number == 2
+	
 	$NewLaser.change_color(colorName)
-		
+	$RaptorSprite/ColorIndicator.modulate = Globals.get_color_by_name(colorName)
+	
+	set_player_number(player_number)	
+	
+func set_player_number(number):
+	if number < 0 || number > 2:
+		number = 0
+	player_number = number
+	wasd = player_number == 2
+	$NewLaser.set_active(number != 0)
+	
 func _process(delta):
+	if player_number == 0:
+		return
+		
 	var direction = Vector2.ZERO
 	if wasd && Input.is_key_pressed(KEY_D) || !wasd && Input.is_action_pressed("ui_right"):
 		direction.x += 1

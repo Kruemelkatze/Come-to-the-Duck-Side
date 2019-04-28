@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scenes/Levels/Level1.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Level_1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/level_1.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=4]

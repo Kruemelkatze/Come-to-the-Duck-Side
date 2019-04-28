@@ -7,15 +7,33 @@ export (PackedScene) var NewLaser
 var frame = 0
 var combined : Area2D = null
 
+export var TowerPlayer1: NodePath
+export var TowerPlayer2: NodePath
+
+var towers = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	towers = get_children()
+	if TowerPlayer1.is_empty():
+		TowerPlayer1 = get_path_to(towers[0])
+	if TowerPlayer2.is_empty():
+		TowerPlayer2 = get_path_to(towers[1])
+		
+	var t1 = get_node(TowerPlayer1)
+	t1.set_player_number(1)
+	var t2 = get_node(TowerPlayer2)
+	t2.set_player_number(2)
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	check_switch_towers()
+	
 	frame += 1
-	var l1 = $NewTower1/NewLaser
-	var l2 = $NewTower2/NewLaser
+	var t1 = get_node(TowerPlayer1)
+	var l1 = t1.get_node('NewLaser')
+	var t2 = get_node(TowerPlayer2)
+	var l2 = t2.get_node('NewLaser')
 	
 	var l1_combination_suitable = is_suitable_for_combination(l1)
 	var l2_combination_suitable = is_suitable_for_combination(l2)
@@ -93,3 +111,32 @@ func hit_something_with_laser(laser):
 		$HitSound.stop()
 		laser.set_open()
 	
+func check_switch_towers():
+		if Input.is_action_just_pressed("switch_color_1"):
+			var t = switch_player(1)
+			TowerPlayer1 = get_path_to(t)
+		if Input.is_action_just_pressed("switch_color_2"):
+			var t = switch_player(2)
+			TowerPlayer2 = get_path_to(t)
+			
+func switch_player(player):
+	var length = towers.size()
+	var current = -1
+	for i in range(length):
+		var t = towers[i]
+		if t.player_number == player:
+			current = i
+			break
+			
+	var current_tower = towers[current]
+	
+	var nextFree = current
+	for i in range(length):
+		var j = (current + i) % length
+		var t = towers[j]
+		if t.player_number == 0:
+			current_tower.set_player_number(0)
+			t.set_player_number(player)
+			return t
+			
+	return current_tower

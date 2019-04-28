@@ -69,7 +69,6 @@ colorName = "cyan"
 [node name="NewTower2" parent="LaserManager" instance=ExtResource( 8 )]
 position = Vector2( 1044.15, 596.775 )
 rotation = -3.19221
-number = 2
 colorName = "yellow"
 
 [node name="KillSound" type="AudioStreamPlayer" parent="LaserManager"]

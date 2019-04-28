@@ -61,7 +61,7 @@ __meta__ = {
 
 [node name="ShadowSprite" type="Sprite" parent="DuckSprite"]
 modulate = Color( 0.14902, 0.137255, 0.137255, 1 )
-position = Vector2( -5.85211, -3.8147e-005 )
+position = Vector2( -5.85211, -3.8147e-05 )
 rotation = 4.71239
 texture = ExtResource( 2 )
 
