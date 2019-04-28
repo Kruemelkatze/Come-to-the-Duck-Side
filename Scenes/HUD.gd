@@ -82,7 +82,7 @@ func game_over():
 func _on_missed_duck():
 	lifes -= 1
 	update_life_counter()
-	if lifes <= 0 and not game_over_flag:
+	if lifes <= 0 and not game_over_flag and get_tree():
 		get_tree().paused = true
 		game_over()
 
