@@ -51,14 +51,14 @@ texture = ExtResource( 2 )
 
 [node name="ColorSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = -1.5708
-frames = SubResource( 2 )
-frame = 3
+frames = SubResource( 1 )
+frame = 6
 playing = true
 
 [node name="OutlineSprite" type="AnimatedSprite" parent="DuckSprite"]
 rotation = 4.71239
-frames = SubResource( 1 )
-frame = 4
+frames = SubResource( 2 )
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DuckSprite"]
