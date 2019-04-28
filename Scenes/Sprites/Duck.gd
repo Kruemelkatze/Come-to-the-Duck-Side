@@ -40,10 +40,9 @@ func kill_me():
 		was_hit = true	
 		return false
 	else:
-		queue_free()
+		call_deferred("queue_free")
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
 	emit_signal("missed_duck")
 	call_deferred("queue_free")
-	#get_parent().call_deferred("queue_free")

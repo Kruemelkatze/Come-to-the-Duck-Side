@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -46,5 +47,7 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountain"]
 polygon = PoolVector2Array( -10.1308, -114.996, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
