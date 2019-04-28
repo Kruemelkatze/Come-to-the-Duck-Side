@@ -7,33 +7,61 @@
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=5]
 
 [node name="TowerTestNew" type="Node2D"]
+position = Vector2( 26.1725, 13.5375 )
 
 [node name="Target" parent="." instance=ExtResource( 1 )]
-position = Vector2( 518.374, 292.122 )
+position = Vector2( 198.256, 448.819 )
 
 [node name="LaserManager" type="Node2D" parent="."]
 script = ExtResource( 2 )
 NewLaser = ExtResource( 3 )
 
 [node name="NewTower1" parent="LaserManager" instance=ExtResource( 4 )]
-position = Vector2( 1038.25, 158.823 )
+position = Vector2( 195.25, 148.823 )
 rotation = 2.86583
 
 [node name="NewTower2" parent="LaserManager" instance=ExtResource( 4 )]
-position = Vector2( 1069.43, 539.601 )
+position = Vector2( 1015.43, 168.601 )
 rotation = 3.41561
-number = 2
 colorName = "blue"
 
+[node name="NewTower3" parent="LaserManager" instance=ExtResource( 4 )]
+position = Vector2( 967.43, 595.601 )
+rotation = 3.41561
+player_number = 0
+colorName = "cyan"
+
+[node name="NewTower4" parent="LaserManager" instance=ExtResource( 4 )]
+position = Vector2( 356.43, 571.601 )
+rotation = 3.41561
+player_number = 0
+colorName = "yellow"
+
 [node name="Duck" parent="." instance=ExtResource( 5 )]
-position = Vector2( 699.184, 297.794 )
+position = Vector2( 580.079, 164.667 )
 color = "red"
 
 [node name="Duck2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 709.523, 350.78 )
+position = Vector2( 590.418, 217.653 )
 color = "blue"
 
 [node name="Duck3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 705.646, 414.106 )
+position = Vector2( 586.541, 280.978 )
 color = "purple"
+
+[node name="Duck4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 588.346, 344.154 )
+color = "yellow"
+
+[node name="Duck5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 578.418, 401.011 )
+color = "cyan"
+
+[node name="Duck6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 582.029, 455.161 )
+color = "green"
+
+[node name="Duck7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 579.321, 509.311 )
+color = "orange"
 

@@ -17,7 +17,8 @@ export var Colors = {
 var ColorCombinations = [
 	['blue', 'red', 'purple'],
 	['red', 'yellow', 'orange'],
-	['yellow', 'cyan', 'green']
+	['yellow', 'cyan', 'green'],
+	['yellow', 'blue', 'green']
 ]
 
 export var SelectableColors = [

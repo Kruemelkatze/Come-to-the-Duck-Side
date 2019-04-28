@@ -2,6 +2,7 @@ extends Area2D
 
 export var colorName = 'default'
 var max_cast = 0
+export var active = true
 
 export var is_colliding_with_target = false
 export var is_colliding_with_laser = false
@@ -31,8 +32,26 @@ func _ready():
 	change_color(colorName)
 	set_open()
 	
+func set_active(active):
+	self.active = active
+	$LaserRaycast.enabled = active
+	$TargetRaycast.enabled = active
+	$CollisionShape2D.disabled = !active
+	
+	if active:
+		set_open()
+		collision_layer = 2
+	else:
+		set_to_length(0)
+		collision_layer = 0
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !active:
+		is_colliding_with_target = false
+		is_colliding_with_laser = false
+		return
+		
 	is_colliding_with_target = $TargetRaycast.is_colliding()
 	target_collision_point = $TargetRaycast.get_collision_point() if is_colliding_with_target else Vector2.INF
 	hit_target = $TargetRaycast.get_collider()
@@ -54,6 +73,9 @@ func remove_hit_target():
 func set_to_position(global_position):
 	var local_pos = to_local(global_position)
 	var length = local_pos.length()
+	set_to_length(length)
+	
+func set_to_length(length):
 	$Sprite.position.x = length / 2
 	$Sprite.region_rect.size.x = length
 	
