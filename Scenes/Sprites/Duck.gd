@@ -37,17 +37,24 @@ func set_alpha(a):
 	$DuckSprite/ColorSprite.modulate.a = a
 	$DuckSprite/OutlineSprite.modulate.a = a
 	$DuckSprite/ShadowSprite.modulate.a = a
+	
 
 func kill_me():
 	
 	if health > Globals.KillDuckAtLifePoints:
-		was_hit = true	
 		
+		was_hit = true	
 		return false
 	else:
 		
-		call_deferred("queue_free")
+		#call_deferred("queue_free")
 		killed=true
+		$DuckSprite/KillSprite.visible=true
+		$DuckSprite/KillSprite.play()
+		$DuckSprite/CollisionShape2D.set_disabled(true)
+		$DuckSprite/ColorSprite.visible=false
+		$DuckSprite/OutlineSprite.visible=false
+		$DuckSprite/ShadowSprite.visible=false
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -56,3 +63,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 		call_deferred("queue_free")
 	
 
+
+
+func _on_KillSprite_animation_finished():
+	call_deferred("queue_free")

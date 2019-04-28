@@ -24,8 +24,9 @@ func _process(delta):
 	for path in paths:
 		ducks += path.get_children()
 	for duck in ducks:
-		var current_offset = duck.get_offset()
-		duck.set_offset(current_offset + delta*duck.speed)
+		if !duck.killed:
+			var current_offset = duck.get_offset()
+			duck.set_offset(current_offset + delta*duck.speed)
 		
 
 func _on_SpawnTimer_timeout():
