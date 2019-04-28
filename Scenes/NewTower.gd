@@ -8,8 +8,11 @@ export var colorName = 'red'
 
 func _ready():
 	angular_speed = deg2rad(angular_speed)
+	
 	$NewLaser.change_color(colorName)
-	set_player_number(player_number)
+	$RaptorSprite/ColorIndicator.modulate = Globals.get_color_by_name(colorName)
+	
+	set_player_number(player_number)	
 	
 func set_player_number(number):
 	if number < 0 || number > 2:
