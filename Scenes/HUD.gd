@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var lifes = 3
-var number_of_levels = 2
+var number_of_levels = 3
 
 var continue_select = false
 var mainmenu_select = false
