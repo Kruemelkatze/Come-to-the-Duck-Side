@@ -43,6 +43,7 @@ func kill_me():
 	else:
 		call_deferred("queue_free")
 		killed=true
+		$KillSound.play()
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
