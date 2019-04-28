@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Art/Fonts/ZCOOLKuaiLe-Regular.ttf" type="DynamicFontData" id=2]
@@ -8,11 +8,17 @@
 size = 64
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 2 )
+
 [node name="HUD" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="PauseScreen" type="ColorRect" parent="."]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.666667 )
@@ -20,12 +26,16 @@ color = Color( 0, 0, 0, 0.666667 )
 [node name="CenterContainer" type="CenterContainer" parent="PauseScreen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.23242
+margin_top = -0.616302
+margin_right = -1.23242
+margin_bottom = -0.616333
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/CenterContainer"]
 margin_left = 308.0
-margin_top = 231.0
+margin_top = 230.0
 margin_right = 971.0
-margin_bottom = 489.0
+margin_bottom = 488.0
 custom_constants/separation = 128
 
 [node name="ContinueLabel" type="Label" parent="PauseScreen/CenterContainer/VBoxContainer"]
@@ -51,40 +61,96 @@ custom_fonts/font = SubResource( 1 )
 text = "Return to Main Menu"
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="GameOverScreen" type="ColorRect" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.666667 )
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.23242
+margin_top = -0.616302
+margin_right = -1.23242
+margin_bottom = -0.616333
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/CenterContainer"]
+margin_left = 308.0
+margin_top = 84.0
+margin_right = 971.0
+margin_bottom = 635.0
+custom_constants/separation = 128
+
+[node name="GameOverLabel" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+margin_right = 663.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 2 )
+text = "The Ducks win. :( 
+Try again?"
+align = 1
+
+[node name="RestartLabel" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 293.0
+margin_right = 663.0
+margin_bottom = 358.0
+rect_pivot_offset = Vector2( 331, 32 )
+focus_next = NodePath("../ReturnMainLabel")
+focus_previous = NodePath("../ReturnMainLabel")
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+text = "Restart Level"
+align = 1
+
+[node name="ReturnMainLabel" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 486.0
+margin_right = 663.0
+margin_bottom = 551.0
+rect_pivot_offset = Vector2( 331, 32 )
+focus_next = NodePath("../RestartLabel")
+focus_previous = NodePath("../RestartLabel")
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+text = "Return to Main Menu"
+align = 1
+
+[node name="LifeContainer" type="Control" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -208.0
+margin_left = -200.0
+margin_bottom = 80.0
+
+[node name="LifeIndicator1" type="TextureRect" parent="LifeContainer"]
 margin_top = 20.0
-margin_bottom = 173.0
-rect_scale = Vector2( 0.35, 0.35 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 536.0
-margin_bottom = 173.0
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 margin_right = 176.0
-margin_bottom = 173.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture = ExtResource( 3 )
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 180.0
-margin_right = 356.0
-margin_bottom = 173.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture = ExtResource( 3 )
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 360.0
-margin_right = 536.0
-margin_bottom = 173.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.35, 0.35 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="LifeIndicator2" type="TextureRect" parent="LifeContainer"]
+margin_left = 60.0
+margin_top = 20.0
+margin_right = 236.0
+margin_bottom = 193.0
+rect_scale = Vector2( 0.35, 0.35 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource( 3 )
+stretch_mode = 1
+
+[node name="LifeIndicator3" type="TextureRect" parent="LifeContainer"]
+margin_left = 119.618
+margin_top = 19.618
+margin_right = 295.618
+margin_bottom = 192.618
+rect_scale = Vector2( 0.35, 0.35 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+stretch_mode = 1
 
 [connection signal="focus_entered" from="PauseScreen/CenterContainer/VBoxContainer/ContinueLabel" to="." method="ContinueLabel_emph_start"]
 [connection signal="focus_exited" from="PauseScreen/CenterContainer/VBoxContainer/ContinueLabel" to="." method="ContinueLabel_emph_stop"]
@@ -92,3 +158,9 @@ texture = ExtResource( 3 )
 [connection signal="focus_entered" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_start"]
 [connection signal="focus_exited" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_stop"]
 [connection signal="gui_input" from="PauseScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="_on_ReturnMainLabel_gui_input"]
+[connection signal="focus_entered" from="GameOverScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="RestartLabel_emph_start"]
+[connection signal="focus_exited" from="GameOverScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="RestartLabel_emph_stop"]
+[connection signal="gui_input" from="GameOverScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="_on_RestartLabel_gui_input"]
+[connection signal="focus_entered" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_start"]
+[connection signal="focus_exited" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_stop"]
+[connection signal="gui_input" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="_on_ReturnMainLabel_gui_input"]

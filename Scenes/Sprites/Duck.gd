@@ -45,4 +45,5 @@ func kill_me():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	emit_signal("missed_duck")
-	queue_free()
+	call_deferred("queue_free")
+	#get_parent().call_deferred("queue_free")

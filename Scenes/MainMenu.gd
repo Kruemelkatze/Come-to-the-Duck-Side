@@ -1,8 +1,5 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var start_hover = false
 var exit_hover = false
 var hover_time = 0

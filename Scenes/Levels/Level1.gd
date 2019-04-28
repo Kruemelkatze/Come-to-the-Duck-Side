@@ -3,7 +3,7 @@ extends Node
 export (PackedScene) var Duck
 
 
-var duck_index=0 #character index in sequence
+var duck_index = 0 #character index in sequence
 var duck_sequence
 var paths
 
@@ -28,9 +28,11 @@ func _on_SpawnTimer_timeout():
 	var duck_config = duck_sequence[duck_index]
 	duck.speed = duck_config["speed"]
 	duck.set_color(duck_config["color"])
+	duck.connect("missed_duck", $HUD, "_on_missed_duck")
 	paths[duck_config["path"]].add_child(duck)
 	
 	duck_index += 1
 	$SpawnTimer.stop()
 	if duck_index < len(duck_sequence):
 		$SpawnTimer.start(duck_config["break_after"])
+
