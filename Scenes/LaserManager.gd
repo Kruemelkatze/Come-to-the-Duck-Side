@@ -80,7 +80,7 @@ func combine_laser(l1, l2):
 	l2.set_to_position(l2.laser_collision_point)
 	
 	if combined == null:
-		combined = NewLaser.instance(true)
+		combined = NewLaser.instance()
 		combined.is_combined = true
 		add_child(combined)
 	
