@@ -63,11 +63,14 @@ align = 1
 
 [node name="GameOverScreen" type="ColorRect" parent="."]
 pause_mode = 2
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.666667 )
 
 [node name="CenterContainer" type="CenterContainer" parent="GameOverScreen"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.23242
@@ -76,6 +79,7 @@ margin_right = -1.23242
 margin_bottom = -0.616333
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen/CenterContainer"]
+editor/display_folded = true
 margin_left = 308.0
 margin_top = 84.0
 margin_right = 971.0
@@ -108,6 +112,67 @@ margin_right = 663.0
 margin_bottom = 551.0
 rect_pivot_offset = Vector2( 331, 32 )
 focus_next = NodePath("../RestartLabel")
+focus_previous = NodePath("../RestartLabel")
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+text = "Return to Main Menu"
+align = 1
+
+[node name="SuccessScreen" type="ColorRect" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.666667 )
+
+[node name="CenterContainer" type="CenterContainer" parent="SuccessScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.23242
+margin_top = -0.616302
+margin_right = -1.23242
+margin_bottom = -0.616333
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SuccessScreen/CenterContainer"]
+margin_left = 232.0
+margin_top = 67.0
+margin_right = 1047.0
+margin_bottom = 652.0
+custom_constants/separation = 75
+
+[node name="SuccessLabel" type="Label" parent="SuccessScreen/CenterContainer/VBoxContainer"]
+margin_right = 815.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 2 )
+text = "Congratulations!
+You beat the game. :)"
+align = 1
+
+[node name="NextLevelLabel" type="Label" parent="SuccessScreen/CenterContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 815.0
+margin_bottom = 305.0
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+text = "Next Level"
+align = 1
+
+[node name="RestartLabel" type="Label" parent="SuccessScreen/CenterContainer/VBoxContainer"]
+margin_top = 380.0
+margin_right = 815.0
+margin_bottom = 445.0
+rect_pivot_offset = Vector2( 331, 32 )
+focus_next = NodePath("../ReturnMainLabel")
+focus_previous = NodePath("../NextLevelLabel")
+focus_mode = 2
+custom_fonts/font = SubResource( 1 )
+text = "Restart Level"
+align = 1
+
+[node name="ReturnMainLabel" type="Label" parent="SuccessScreen/CenterContainer/VBoxContainer"]
+margin_top = 520.0
+margin_right = 815.0
+margin_bottom = 585.0
+focus_next = NodePath("../NextLevelLabel")
 focus_previous = NodePath("../RestartLabel")
 focus_mode = 2
 custom_fonts/font = SubResource( 1 )
@@ -164,3 +229,12 @@ stretch_mode = 1
 [connection signal="focus_entered" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_start"]
 [connection signal="focus_exited" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_stop"]
 [connection signal="gui_input" from="GameOverScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="_on_ReturnMainLabel_gui_input"]
+[connection signal="focus_entered" from="SuccessScreen/CenterContainer/VBoxContainer/NextLevelLabel" to="." method="NextLevelLabel_emph_start"]
+[connection signal="focus_exited" from="SuccessScreen/CenterContainer/VBoxContainer/NextLevelLabel" to="." method="NextLevelLabel_emph_stop"]
+[connection signal="gui_input" from="SuccessScreen/CenterContainer/VBoxContainer/NextLevelLabel" to="." method="_on_NextLevelLabel_gui_input"]
+[connection signal="focus_entered" from="SuccessScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="RestartLabel_emph_start"]
+[connection signal="focus_exited" from="SuccessScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="RestartLabel_emph_stop"]
+[connection signal="gui_input" from="SuccessScreen/CenterContainer/VBoxContainer/RestartLabel" to="." method="_on_RestartLabel_gui_input"]
+[connection signal="focus_entered" from="SuccessScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_start"]
+[connection signal="focus_exited" from="SuccessScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="ReturnMainLabel_emph_stop"]
+[connection signal="gui_input" from="SuccessScreen/CenterContainer/VBoxContainer/ReturnMainLabel" to="." method="_on_ReturnMainLabel_gui_input"]
