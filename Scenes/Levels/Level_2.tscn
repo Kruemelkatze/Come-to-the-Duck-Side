@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level_2.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/NewTower.gd" type="Script" id=9]
-
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -42,9 +40,11 @@ position = Vector2( 234.187, 143.299 )
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountain"]
-polygon = PoolVector2Array( -10.1308, -114.996, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
+position = Vector2( 850.529, 428.422 )
+polygon = PoolVector2Array( 42.8669, -184.73, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
+layer = -1
 
 [node name="DuckPath" type="Path2D" parent="."]
 position = Vector2( -10.1264, 31.3283 )
@@ -63,24 +63,21 @@ stream = ExtResource( 5 )
 script = ExtResource( 6 )
 NewLaser = ExtResource( 7 )
 
-[node name="NewTower1" type="Node2D" parent="LaserManager" instance=ExtResource( 8 )]
-position = Vector2( 950.31, 135.53 )
+[node name="NewTower1" parent="LaserManager" instance=ExtResource( 8 )]
+position = Vector2( 795.185, 138.854 )
 rotation = 2.94786
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
 colorName = "cyan"
 
-[node name="NewTower2" type="Node2D" parent="LaserManager" instance=ExtResource( 8 )]
-position = Vector2( 1044.15, 596.775 )
-rotation = -3.19221
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
-number = 2
+[node name="NewTower2" parent="LaserManager" instance=ExtResource( 8 )]
+position = Vector2( 452.458, 330.846 )
+rotation = -5.65992
+player_number = 2
 colorName = "yellow"
+
+[node name="NewTower3" parent="LaserManager" instance=ExtResource( 8 )]
+position = Vector2( 1003.23, 475.095 )
+rotation = -3.19221
+player_number = 0
 
 [node name="KillSound" type="AudioStreamPlayer" parent="LaserManager"]
 stream = SubResource( 3 )
