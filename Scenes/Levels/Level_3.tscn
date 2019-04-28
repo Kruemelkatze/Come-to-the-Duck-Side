@@ -61,6 +61,7 @@ curve = SubResource( 3 )
 stream = ExtResource( 5 )
 
 [node name="LaserManager" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 6 )
 NewLaser = ExtResource( 7 )
 TowerPlayer1 = NodePath("NewTower1")
@@ -94,5 +95,24 @@ volume_db = 10.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="LaserManager"]
 stream = SubResource( 5 )
+
+[node name="Mountains" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountains"]
+polygon = PoolVector2Array( 88.0148, 101.577, 229.205, 175.241, 488.257, 159.28, 544.733, 78.2498, 399.86, 11.9519 )
+
+[node name="ForestLeft" type="Area2D" parent="."]
+position = Vector2( -229.587, 399.015 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ForestLeft"]
+position = Vector2( 7.36639, 4.91095 )
+polygon = PoolVector2Array( 305.659, 52.0905, 308.114, 179.775, 440.71, 168.726, 425.977, 33.6745 )
+
+[node name="ForestRight" type="Area2D" parent="."]
+position = Vector2( 685.078, 126.457 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ForestRight"]
+position = Vector2( 9.82172, 7.36641 )
+polygon = PoolVector2Array( 310.57, 45.9518, 313.025, 171.181, 421.066, 179.775, 425.977, 33.6745 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
