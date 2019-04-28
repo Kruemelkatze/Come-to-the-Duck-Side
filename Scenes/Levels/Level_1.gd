@@ -17,6 +17,7 @@ func _ready():
 	duck_sequence = parse_json(file.get_as_text())
 	paths = [$DuckPath]
 	$SpawnTimer.start()
+	$BackgroundMusic.play()
 
 func _process(delta):
 	var ducks = []

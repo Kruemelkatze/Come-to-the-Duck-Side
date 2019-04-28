@@ -15,6 +15,7 @@ func _ready():
 	duck_sequence = parse_json(file.get_as_text())
 	paths = [$DuckPath,$DuckPath2]
 	$SpawnTimer.start()
+	$BackgroundMusic.play()
 	
 
 

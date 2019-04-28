@@ -16,6 +16,7 @@ var killed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_color(color)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -38,19 +39,20 @@ func set_alpha(a):
 	$DuckSprite/ShadowSprite.modulate.a = a
 
 func kill_me():
+	
 	if health > Globals.KillDuckAtLifePoints:
 		was_hit = true	
+		
 		return false
 	else:
+		
 		call_deferred("queue_free")
 		killed=true
-		$KillSound.play()
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("offscreen: ")
-	print(killed)
 	if !killed:
 		emit_signal("missed_duck")
 		call_deferred("queue_free")
+	
 

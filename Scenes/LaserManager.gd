@@ -80,10 +80,16 @@ func hit_something_with_laser(laser):
 			target = target.get_parent()
 			
 		if target != null && target.get('color') == laser.colorName && target.has_method('kill_me'):
+			
 			if target.kill_me():
 				laser.remove_hit_target()
+				$KillSound.play()
 				target = null
+			#else:
+				#if !$HitSound.is_playing():
+					#$HitSound.play()
 
 	else:
+		$HitSound.stop()
 		laser.set_open()
 	
