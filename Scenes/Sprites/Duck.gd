@@ -44,5 +44,11 @@ func kill_me():
 		return true
 
 func _on_VisibilityNotifier2D_screen_exited():
+	print(get_unit_offset())
+	#if(get_unit_offset()>0.8):
+		#print("EMIT SIGNAL")
+		#emit_signal("missed_duck")
+		#call_deferred("queue_free")
+func missed():
 	emit_signal("missed_duck")
 	call_deferred("queue_free")

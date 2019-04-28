@@ -13,9 +13,9 @@ func _ready():
 	$NewLaser.change_color(colorName)
 		
 func _process(delta):
-	if wasd && Input.is_key_pressed(KEY_D) || !wasd && Input.is_action_pressed("ui_right"):
+	if wasd && Input.is_key_pressed(KEY_W) || !wasd && Input.is_action_pressed("ui_up"):
 		rotate(angular_speed*delta)
-	if wasd && Input.is_key_pressed(KEY_A) || !wasd && Input.is_action_pressed("ui_left"):
+	if wasd && Input.is_key_pressed(KEY_S) || !wasd && Input.is_action_pressed("ui_down"):
 		rotate(-angular_speed*delta)
 	#if wasd && Input.is_key_pressed(KEY_W) || !wasd && Input.is_action_just_pressed("ui_up"):
 	#	$NewLaser.color += 1

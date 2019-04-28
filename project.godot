@@ -16,17 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="bada55b0cc1a"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Globals.gd"
-
-[display]
-
-window/size/width=1280
-window/size/height=720
+Globals="*res://Scenes/Globals.gd"
 
 [rendering]
 
