@@ -4,7 +4,7 @@
 		{"color": "yellow", "speed": 100, "path": 1, "break_after": 10},
 		
 		{"color": "blue", "speed": 100, "path": 0, "break_after": 0.6},
-		{"color": "orange", "speed": 50, "path": 2, "break_after": 0.6},
+		{"color": "orange", "speed": 50, "path": 2, "break_after": 1},
 		{"color": "orange", "speed": 50, "path": 2, "break_after": 15},
 		
 		
