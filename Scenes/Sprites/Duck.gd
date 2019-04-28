@@ -35,6 +35,7 @@ func set_color(c):
 func set_alpha(a):
 	$DuckSprite/ColorSprite.modulate.a = a
 	$DuckSprite/OutlineSprite.modulate.a = a
+	$DuckSprite/ShadowSprite.modulate.a = a
 
 func kill_me():
 	if health > Globals.KillDuckAtLifePoints:
