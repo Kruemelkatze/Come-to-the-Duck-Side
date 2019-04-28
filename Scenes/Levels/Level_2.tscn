@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level2.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/NewTower.gd" type="Script" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -62,22 +61,14 @@ stream = ExtResource( 5 )
 script = ExtResource( 6 )
 NewLaser = ExtResource( 7 )
 
-[node name="NewTower1" type="Node2D" parent="LaserManager" instance=ExtResource( 8 )]
+[node name="NewTower1" parent="LaserManager" instance=ExtResource( 8 )]
 position = Vector2( 950.31, 135.53 )
 rotation = 2.94786
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
 colorName = "cyan"
 
-[node name="NewTower2" type="Node2D" parent="LaserManager" instance=ExtResource( 8 )]
+[node name="NewTower2" parent="LaserManager" instance=ExtResource( 8 )]
 position = Vector2( 1044.15, 596.775 )
 rotation = -3.19221
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
 number = 2
 colorName = "yellow"
 
