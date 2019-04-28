@@ -82,8 +82,9 @@ func game_over():
 func _on_missed_duck():
 	lifes -= 1
 	update_life_counter()
-	if lifes <= 0 and not game_over_flag:
-		get_tree().paused = true
+	var tree = get_tree()
+	if lifes <= 0 and not game_over_flag and tree != null:
+		tree.paused = true
 		game_over()
 
 func _on_RestartLabel_gui_input(event):
