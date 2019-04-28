@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Sprites/Duck.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/level_1.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/LaserManager.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Sprites/Laser.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Sprites/Tower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sounds/background_music_02.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -15,15 +19,39 @@ script = ExtResource( 1 )
 Duck = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 639.778, 360.803 )
+position = Vector2( 641.285, 360.803 )
 texture = ExtResource( 3 )
 
 [node name="DuckPath" type="Path2D" parent="."]
-position = Vector2( -3.10583, -160.047 )
+position = Vector2( -5.17317, -158.674 )
 curve = SubResource( 1 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
+[node name="LaserManager" type="Node2D" parent="."]
+script = ExtResource( 4 )
+NewLaser = ExtResource( 5 )
+
+[node name="NewTower1" parent="LaserManager" instance=ExtResource( 6 )]
+position = Vector2( 950.31, 135.53 )
+rotation = 2.94786
+
+[node name="NewTower2" parent="LaserManager" instance=ExtResource( 6 )]
+position = Vector2( 1044.15, 596.775 )
+rotation = -3.19221
+number = 2
+colorName = "blue"
+
+[node name="Mountain" type="Area2D" parent="."]
+position = Vector2( 234.187, 143.299 )
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mountain"]
+polygon = PoolVector2Array( -10.1308, -114.996, 174.3, -23.4437, 166.339, 39.5813, 25.0305, 84.0304, -144.805, 62.1376, -114.951, -51.3074, -71.8289, -30.7413 )
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

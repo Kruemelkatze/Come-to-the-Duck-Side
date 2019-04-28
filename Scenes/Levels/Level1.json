@@ -18,11 +18,11 @@
 		
 		{"color": "purple", "speed": 100, "path": 0, "break_after": 0.6},
 		{"color": "red", "speed": 100, "path": 0, "break_after": 0.6},
-		{"color": "purple", "speed": 100, "path": 0, "break_after": 15},
+		{"color": "purple", "speed": 100, "path": 0, "break_after": 10},
 		
 		{"color": "purple", "speed": 100, "path": 0, "break_after": 0.6},
 		{"color": "blue", "speed": 100, "path": 0, "break_after": 0.6},
-		{"color": "purple", "speed": 100, "path": 0, "break_after": 15},
+		{"color": "purple", "speed": 100, "path": 0, "break_after": 10},
 		
 		
 		{"color": "red", "speed": 250, "path": 0, "break_after": 10},
